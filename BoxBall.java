@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
-
+import java.util.Random;
 /**
  * Class BoxBall - a graphical ball that moves similar to the ball in PONG.
  * It bounces around the confines of a box as defined by the Box class.
