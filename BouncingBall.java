@@ -66,7 +66,7 @@ public class BouncingBall
     public void erase()
     {
         canvas.eraseCircle(xPosition, yPosition, diameter);
-    }    
+    }
 
     /**
      * Move this ball according to its position and speed and redraw.
@@ -74,8 +74,8 @@ public class BouncingBall
     public void move()
     {
         // remove from canvas at the current position
-        erase();
-            
+        erase(); 
+        
         // compute new position
         ySpeed += GRAVITY;
         yPosition += ySpeed;
