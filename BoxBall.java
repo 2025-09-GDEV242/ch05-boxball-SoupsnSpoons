@@ -116,11 +116,7 @@ public class BoxBall
         if(yPosition <= myBox.getTopWall()){
             ySpeed = ySpeed * -1;
         }
-        /*
-         * These statements don't seem incorrect, but when we run the code, the ball seems to freeze and bounce back and forth
-         * over the course of a very small section. We don't know why. We changed the sarting position of the ball to make sure
-         * it started inside the canvas, to avoid it hitting the outer corner and bouncing away, but now we have a new problem.
-         */
+        
         draw();
     }  
 
