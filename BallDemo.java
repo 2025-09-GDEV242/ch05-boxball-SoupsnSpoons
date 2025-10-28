@@ -33,6 +33,21 @@ public class BallDemo
     public void boxBounce()
     {
         // you must implement this
+        /*
+         * this is the example provided by the professor
+         * This statement reads as follows...
+         *      Wait 50 miliseconds, then move the ball
+         *      ...it worked
+        */
+        BoxBall testBall;
+        
+        testBall = new BoxBall(120, 120, 10, Color.BLUE, box, myCanvas);
+        
+        while(true) {
+            myCanvas.wait(50);
+            testBall.move();
+            box.draw();
+        }
     }
     
     /**

@@ -52,6 +52,10 @@ public class BoxBall
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
+        myBox = box;
+        
+        xSpeed = 3;
+        ySpeed = 3;
 
         canvas = drawingCanvas;
     }
@@ -71,6 +75,8 @@ public class BoxBall
     public void erase()
     {
         canvas.eraseCircle(xPosition, yPosition, diameter);
+        //this means that the canvas is being erased because the canvas is told to erase the ball loaction, regardless of position
+        //the way to ensure the canvas doesn't visibly chip away is to have the canvas redraw itself after every iteration of the erase method
     }    
 
     /**
@@ -82,11 +88,28 @@ public class BoxBall
         erase();
             
         // compute new position
+        xPosition = xPosition + xSpeed;
+        yPosition = yPosition + ySpeed;
   
         // figure out if it has hit the left or right wall
-        
+        if(xPosition <= myBox.getRightWall() - diameter){
+            xSpeed = xSpeed * -1;
+        }
+        if(xPosition >= myBox.getLeftWall()){
+            xSpeed = xSpeed * -1;
+        }
         // figure out if it has hit the top or bottom wall
-        
+        if(yPosition >= myBox.getBottomWall() - diameter){
+            ySpeed = ySpeed * -1;
+        }
+        if(yPosition <= myBox.getTopWall()){
+            ySpeed = ySpeed * -1;
+        }
+        /*
+         * These statements don't seem incorrect, but when we run the code, the ball seems to freeze and bounce back and forth
+         * over the course of a very small section. We don't know why. We changed the sarting position of the ball to make sure
+         * it started inside the canvas, to avoid it hitting the outer corner and bouncing away, but now we have a new problem.
+         */
         draw();
     }    
 
