@@ -25,7 +25,7 @@ import java.util.Random;
 public class BoxBall
 {
     private Box myBox;
-
+    
     private Ellipse2D.Double circle;    // represents the ball
     private Color color;        // color of the ball (can be rgb value)
     private int diameter;       // width of ball in number of pixels
@@ -45,11 +45,12 @@ public class BoxBall
      * @param box  the bounding box (where the ball will bounce)
      * @param drawingCanvas  the canvas to draw this ball on
      */
-    public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
+    public BoxBall(int xPos, int yPos, int ballPosition, int ballDiameter, Color ballColor,
                         Box box, Canvas drawingCanvas)
     {
         xPosition = xPos;
         yPosition = yPos;
+        ballPosition = xPos + yPos;
         color = ballColor;
         diameter = ballDiameter;
         myBox = box;
@@ -59,7 +60,17 @@ public class BoxBall
 
         canvas = drawingCanvas;
     }
-
+    /**
+     * The point here is to make a ball that:
+     *  moves inside the box
+     *  bounces off the walls so the ball always stays inside the box
+     *  change the initial speed of the ball so it's random and
+     *      not strictly horizontal or vertical
+     *  change the initial speed of the ball to random and 
+     *      inside the box
+     *  include a parameter determining how many balls are in the box
+     */
+    
     /**
      * Draw this ball at its current position onto the canvas.
      **/
@@ -105,13 +116,9 @@ public class BoxBall
         if(yPosition <= myBox.getTopWall()){
             ySpeed = ySpeed * -1;
         }
-        /*
-         * These statements don't seem incorrect, but when we run the code, the ball seems to freeze and bounce back and forth
-         * over the course of a very small section. We don't know why. We changed the sarting position of the ball to make sure
-         * it started inside the canvas, to avoid it hitting the outer corner and bouncing away, but now we have a new problem.
-         */
+        
         draw();
-    }    
+    }  
 
     /**
      * return the horizontal position of this ball
