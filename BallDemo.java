@@ -41,7 +41,7 @@ public class BallDemo
         */
         BoxBall testBall;
         
-        testBall = new BoxBall(120, 120, 10, Color.BLUE, box, myCanvas);
+        testBall = new BoxBall(120, 120, 10, 10, Color.BLUE, box, myCanvas);
         
         while(true) {
             myCanvas.wait(50);
